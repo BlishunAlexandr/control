@@ -1,8 +1,7 @@
 import os
 
-newFileFlag = False
 while True:
-    what = int(input("Открыть(1), Создать(2), файлы(3): "))
+    what = int(input("Открыть(1), Создать(2), файлы(3), удаление(4): "))
     if what == 1: 
         fileName = input("Введите Название файла: ")
         try:
@@ -24,3 +23,7 @@ while True:
         files = os.listdir()
         for file in files:
             print(file)
+
+    elif what == 4:
+        deleteFile = input("Введите название файла который нужно удалить: ")
+        os.remove(deleteFile + ".txt")
