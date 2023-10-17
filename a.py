@@ -2,21 +2,25 @@ import os
 
 newFileFlag = False
 while True:
-    what = int(input("Открыть(1), Создать(2), посмотреть файлы(3): "))
+    what = int(input("Открыть(1), Создать(2), файлы(3): "))
     if what == 1: 
-        fileName = input("Введите путь и название файла: ")
-        if fileName.endswith(".txt"): 
-            try:
-                with open(fileName, "r", encoding="UTF-8") as file:
-                    content = file.read()
-                    print(content)
-            except FileNotFoundError:
-                print("Файл не найден")
-        else: 
-            print("вы ввели неправильное название/расширение/путь файла")
+        fileName = input("Введите Название файла: ")
+        try:
+            with open(fileName + ".txt", "r", encoding="UTF-8") as file:
+                content = file.read()
+                print(content)
+        except FileNotFoundError:
+            print("Файл не найден")
 
+        
     elif what == 2:
-        while newFileFlag == False: 
-            nameNewFile = input("Введите название файла: ")
+        nameNewFile = input("Введите название файла: ")
+        newFile = open(nameNewFile + ".txt", 'w', encoding="UTF-8")
+        text = input("Введите текст: \n")
+        newFile.write(text)
+        newFile.close()
 
-            newFile = open(nameNewFile.txt, 'r+', encoding="UTF-8")
+    elif what == 3:
+        files = os.listdir()
+        for file in files:
+            print(file)
