@@ -30,24 +30,14 @@ while True:
         os.remove(deleteFile + ".json")
 
     elif what == 5:
-        editFileName = input("Введите название файла, который нужно редактировать: ")
+        editFile = input("Введите название файла, который нужно редактировать: ")
         try:
-            with open(editFileName + ".json", "r", encoding="UTF-8") as file:
+            with open(editFile + ".json", "r", encoding="UTF-8") as file:
                 content = file.read()
                 print("Текущий текст в файле:\n", content)
-                choice = input("Хотите изменить (1) весь текст или (2) часть текста: ")
-                if choice == "1":
-                    new_text = input("Введите новый текст: \n")
-                elif choice == "2":
-                    start = int(input("Введите начальную позицию: "))
-                    end = int(input("Введите конечную позицию: "))
-                    new_text = input("Введите новый текст для замены: ")
-                    content = content[:start] + new_text + content[end:]
-                else:
-                    print("Некорректный выбор.")
-                    continue
-            with open(editFileName + ".json", "w", encoding="UTF-8") as file:
-                file.write(content)
+                new_text = input("Введите новый текст: \n")
+            with open(editFile + ".json", "w", encoding="UTF-8") as file:
+                file.write(new_text)
                 print("Текст успешно изменен.")
         except FileNotFoundError:
             print("Файл не найден")
